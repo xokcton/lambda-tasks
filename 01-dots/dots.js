@@ -1,21 +1,9 @@
-const getPossibleCombinations = (arr, letter) => {
-  const combinations = []
-
-  for (let index = 0; index < arr.length; index++) {
-    combinations.push(`${arr[index]}${letter}`)
-    combinations.push(`${arr[index]}.${letter}`)
+const insertDots = (str) => {
+  let tmp = [str[0]]
+  for (let index = 1; index < str.length; index++) {
+    const newStr = tmp.slice().map(element => element + '.')
+    tmp = [...newStr, ...tmp].map(element => element + str[index])
   }
-
-  return combinations
-}
-
-const insertDots = (arr) => {
-  let tmp = [arr[0]]
-
-  for (let index = 1; index < arr.length; index++) {
-    tmp = [...getPossibleCombinations(tmp, arr[index])]
-  }
-
   return tmp
 }
 
