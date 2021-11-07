@@ -67,7 +67,7 @@ const existInAtLeastTen = prefix => {
 }
 
 // 1
-// console.log('Number of unique values among 200k:', uniqueValues('200kfiles/'))
+console.log('Number of unique values among 200k:', uniqueValues('200kfiles/'))
 // console.log('Number of unique values among 2kk:', uniqueValues('2kkfiles/'))
 
 // 2
@@ -75,5 +75,5 @@ const existInAtLeastTen = prefix => {
 // console.log('Number of values in all files(2kk):', existInAllFiles('2kkfiles/'))
 
 // 3
-console.log('Number of values in at least 10 files(200k):', existInAtLeastTen('200kfiles/'))
+// console.log('Number of values in at least 10 files(200k):', existInAtLeastTen('200kfiles/'))
 // console.log('Number of values in at least 10 files(2kk):', existInAtLeastTen('2kkfiles/'))

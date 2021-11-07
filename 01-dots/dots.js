@@ -19,4 +19,4 @@ const insertDots = (arr) => {
   return tmp
 }
 
-console.log(insertDots('abсd'))
+console.log(insertDots('abcd'))
