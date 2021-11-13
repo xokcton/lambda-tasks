@@ -51,7 +51,9 @@ const existInAtLeastTen = prefix => {
         if (fileName === fileNames[j]) {
           continue
         }
-        const secondaryValues = readFile(`${prefix}${fileNames[j]}`).sort()
+        const secondaryValues = readFile(`${prefix}${fileNames[j]}`).sort(
+          (a, b) => a.indexOf(initialValues[index][0]) - b.indexOf(initialValues[index][0])
+        )
         if (secondaryValues.indexOf(initialValues[index]) !== -1) {
           tmp++
         }
@@ -67,7 +69,7 @@ const existInAtLeastTen = prefix => {
 }
 
 // 1
-console.log('Number of unique values among 200k:', uniqueValues('200kfiles/'))
+// console.log('Number of unique values among 200k:', uniqueValues('200kfiles/'))
 // console.log('Number of unique values among 2kk:', uniqueValues('2kkfiles/'))
 
 // 2
@@ -75,5 +77,5 @@ console.log('Number of unique values among 200k:', uniqueValues('200kfiles/'))
 // console.log('Number of values in all files(2kk):', existInAllFiles('2kkfiles/'))
 
 // 3
-// console.log('Number of values in at least 10 files(200k):', existInAtLeastTen('200kfiles/'))
+console.log('Number of values in at least 10 files(200k):', existInAtLeastTen('200kfiles/'))
 // console.log('Number of values in at least 10 files(2kk):', existInAtLeastTen('2kkfiles/'))
