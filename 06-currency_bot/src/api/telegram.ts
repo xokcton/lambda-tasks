@@ -21,7 +21,9 @@ const myCommands: ICommands[] = [
   {command: '/listFavorite', description: 'Returns a list of selected crypts'},
   {command: '/deleteFavorite', description: 'Removes crypt from "favorites" section'}
 ]
-// bot.setWebHook(`${SERVER_URL}/bot`)
+bot.setWebHook(`${SERVER_URL}/bot`,  {
+  certificate: '../../crt.pem'
+})
 
 bot.setMyCommands([
   {command: '/start', description: 'Bot greeting'},
@@ -35,7 +37,7 @@ bot.onText(/(.+)/, async (msg, match) => {
   const { data } = await getCurrencies()
 
   data.forEach((element: { symbol: string }) => {
-    newArr.push(element.symbol)
+    newArr.push('/' + element.symbol.toLowerCase())
   })
 
   const index = newArr.indexOf(resp)

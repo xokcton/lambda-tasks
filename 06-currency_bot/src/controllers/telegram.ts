@@ -6,7 +6,6 @@ import bot from '../api/telegram'
 export const getMessage: RequestHandler = (req, res) => {
   const { body } = req
   bot.processUpdate(body)
-  console.log(body)
   res.status(200)
 }
 

@@ -18,7 +18,6 @@ const telegram_1 = __importDefault(require("../api/telegram"));
 const getMessage = (req, res) => {
     const { body } = req;
     telegram_1.default.processUpdate(body);
-    console.log(body);
     res.status(200);
 };
 exports.getMessage = getMessage;

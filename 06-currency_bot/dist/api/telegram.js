@@ -28,7 +28,9 @@ const myCommands = [
     { command: '/listFavorite', description: 'Returns a list of selected crypts' },
     { command: '/deleteFavorite', description: 'Removes crypt from "favorites" section' }
 ];
-// bot.setWebHook(`${SERVER_URL}/bot`)
+bot.setWebHook(`${SERVER_URL}/bot`, {
+    certificate: '../../crt.pem'
+});
 bot.setMyCommands([
     { command: '/start', description: 'Bot greeting' },
     { command: '/help', description: 'Brief information about the bot and its list of commands' }
@@ -39,7 +41,7 @@ bot.onText(/(.+)/, (msg, match) => __awaiter(void 0, void 0, void 0, function* (
     const newArr = [...myCommands.map(element => element.command)];
     const { data } = yield (0, currency_1.getCurrencies)();
     data.forEach((element) => {
-        newArr.push(element.symbol);
+        newArr.push('/' + element.symbol.toLowerCase());
     });
     const index = newArr.indexOf(resp);
     if (index === -1) {
