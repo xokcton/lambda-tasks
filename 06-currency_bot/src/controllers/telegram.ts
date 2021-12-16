@@ -6,7 +6,7 @@ import bot from '../api/telegram'
 export const getMessage: RequestHandler = (req, res) => {
   const { body } = req
   bot.processUpdate(body)
-  res.status(200)
+  res.sendStatus(200)
 }
 
 export const addToFavorites = async (data: Favorites) => {

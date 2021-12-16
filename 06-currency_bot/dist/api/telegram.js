@@ -18,7 +18,7 @@ const currency_1 = require("./currency");
 const telegram_1 = require("../controllers/telegram");
 dotenv_1.default.config();
 const { TOKEN, SERVER_URL } = process.env;
-const bot = new node_telegram_bot_api_1.default(`${TOKEN}`, { polling: true });
+const bot = new node_telegram_bot_api_1.default(`${TOKEN}`);
 const myCommands = [
     { command: '/start', description: 'Bot greeting' },
     { command: '/help', description: 'Brief information about the bot and its list of commands' },
@@ -28,9 +28,7 @@ const myCommands = [
     { command: '/listFavorite', description: 'Returns a list of selected crypts' },
     { command: '/deleteFavorite', description: 'Removes crypt from "favorites" section' }
 ];
-bot.setWebHook(`${SERVER_URL}/bot`, {
-    certificate: '../../crt.pem'
-});
+bot.setWebHook(`${SERVER_URL}/bot${TOKEN}`);
 bot.setMyCommands([
     { command: '/start', description: 'Bot greeting' },
     { command: '/help', description: 'Brief information about the bot and its list of commands' }

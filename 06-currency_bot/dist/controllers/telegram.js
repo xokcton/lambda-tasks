@@ -18,7 +18,7 @@ const telegram_1 = __importDefault(require("../api/telegram"));
 const getMessage = (req, res) => {
     const { body } = req;
     telegram_1.default.processUpdate(body);
-    res.status(200);
+    res.sendStatus(200);
 };
 exports.getMessage = getMessage;
 const addToFavorites = (data) => __awaiter(void 0, void 0, void 0, function* () {

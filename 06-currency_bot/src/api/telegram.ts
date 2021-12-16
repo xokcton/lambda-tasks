@@ -11,7 +11,7 @@ interface ICommands{
 
 dotenv.config()
 const { TOKEN, SERVER_URL }  = process.env
-const bot = new TelegramBot(`${TOKEN}`, { polling: true })
+const bot = new TelegramBot(`${TOKEN}`)
 const myCommands: ICommands[] = [
   {command: '/start', description: 'Bot greeting'},
   {command: '/help', description: 'Brief information about the bot and its list of commands'},
@@ -21,9 +21,7 @@ const myCommands: ICommands[] = [
   {command: '/listFavorite', description: 'Returns a list of selected crypts'},
   {command: '/deleteFavorite', description: 'Removes crypt from "favorites" section'}
 ]
-bot.setWebHook(`${SERVER_URL}/bot`,  {
-  certificate: '../../crt.pem'
-})
+bot.setWebHook(`${SERVER_URL}/bot${TOKEN}`)
 
 bot.setMyCommands([
   {command: '/start', description: 'Bot greeting'},
