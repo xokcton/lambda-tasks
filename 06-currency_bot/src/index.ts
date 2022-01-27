@@ -1,6 +1,6 @@
 import express from 'express'
 import dotenv from 'dotenv'
-import { json } from 'body-parser'
+import { json, urlencoded } from 'body-parser'
 import { errorHandler } from './middlewares/error'
 import tgRoutes from './routes/route'
 import { connectToDatabase } from "./services/db"
@@ -10,6 +10,7 @@ const app = express()
 const PORT = process.env.PORT || 3000
 
 app.use(json())
+app.use(urlencoded())
 app.use(errorHandler)
 app.use(tgRoutes)
 

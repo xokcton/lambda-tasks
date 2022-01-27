@@ -1,0 +1,40 @@
+service: service-09-aws-serverless
+
+provider:
+  name: aws
+  runtime: nodejs12.x
+  lambdaHashingVersion: 20201221
+  stage: dev
+  region: us-east-1
+
+functions:
+  firstTask:
+    handler: src/firstTask.handler
+    events:
+      - httpApi:
+          path: /firstTask
+          method: post
+  secondTask:
+    handler: src/secondTask.handler
+    events:
+      - httpApi:
+          path: /secondTask
+          method: post
+  thirdTask:
+    handler: src/thirdTask.handler
+    events:
+      - httpApi:
+          path: /thirdTask
+          method: post
+  fourthTask:
+    handler: src/fourthTask.handler
+    events:
+      - httpApi:
+          path: /fourthTask
+          method: post
+  fifthTask:
+    handler: src/fifthTask.handler
+    events:
+      - httpApi:
+          path: /fifthTask
+          method: post

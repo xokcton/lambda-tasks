@@ -13,6 +13,7 @@ dotenv_1.default.config();
 const app = (0, express_1.default)();
 const PORT = process.env.PORT || 3000;
 app.use((0, body_parser_1.json)());
+app.use((0, body_parser_1.urlencoded)());
 app.use(error_1.errorHandler);
 app.use(route_1.default);
 (0, db_1.connectToDatabase)().catch((error) => {
