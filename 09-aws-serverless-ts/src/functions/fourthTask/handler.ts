@@ -1,7 +1,7 @@
 import 'source-map-support/register';
 
-import { formatJSONResponse } from '@libs/apiGateway';
-import { middyfy } from '@libs/lambda';
+import { formatJSONResponse } from '@middlewares/formatJSONResponse';
+import { middyfy } from '@middlewares/middyfy';
 
 const fourthTask = async (event) => {
   console.log(event);

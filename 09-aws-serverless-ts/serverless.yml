@@ -1,0 +1,53 @@
+service: service-09-aws-serverless-ts
+
+provider:
+  name: aws
+  runtime: nodejs12.x
+  lambdaHashingVersion: 20201221
+  stage: dev
+  region: us-east-1
+  apiGateway:
+    minimumCompressionSize: 1024
+    shouldStartNameWithService: true
+  environment:
+    AWS_NODEJS_CONNECTION_REUSE_ENABLED: 1
+
+functions:
+  firstTask:
+    handler: src/functions/firstTask/handler.main
+    events:
+      - http:
+          path: /firstTask
+          method: post
+  secondTask:
+    handler: src/functions/secondTask/handler.main
+    events:
+      - http:
+          path: /secondTask
+          method: post
+  thirdTask:
+    handler: src/functions/thirdTask/handler.main
+    events:
+      - http:
+          path: /thirdTask
+          method: post
+  fourthTask:
+    handler: src/functions/fourthTask/handler.main
+    events:
+      - http:
+          path: /fourthTask
+          method: post
+  fifthTask:
+    handler: src/functions/fifthTask/handler.main
+    events:
+      - http:
+          path: /fifthTask
+          method: post
+
+custom:
+  webpack:
+    webpackConfig: webpack.config.js
+    includeModules: true
+
+plugins:
+  - serverless-webpack

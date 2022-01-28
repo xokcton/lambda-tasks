@@ -1,8 +1,8 @@
 import 'source-map-support/register';
 
-import type { ValidatedEventAPIGatewayProxyEvent } from '@libs/apiGateway';
-import { formatJSONResponse } from '@libs/apiGateway';
-import { middyfy } from '@libs/lambda';
+import type { ValidatedEventAPIGatewayProxyEvent } from '@middlewares/formatJSONResponse';
+import { formatJSONResponse } from '@middlewares/formatJSONResponse';
+import { middyfy } from '@middlewares/middyfy';
 
 import schema from './schema';
 
@@ -21,4 +21,4 @@ const firstTask: ValidatedEventAPIGatewayProxyEvent<typeof schema> = async (even
   });
 }
 
-export const main = middyfy(firstTask);
+export const main = middyfy(firstTask)
