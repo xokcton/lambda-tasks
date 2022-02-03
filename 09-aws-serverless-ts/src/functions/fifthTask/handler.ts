@@ -1,10 +1,6 @@
 import 'source-map-support/register';
 
-import type { ValidatedEventAPIGatewayProxyEvent } from '@middlewares/formatJSONResponse';
-import { formatJSONResponse } from '@middlewares/formatJSONResponse';
 import { middyfy } from '@middlewares/middyfy';
-
-import schema from './schema';
 
 type ResponseArray = {
   firstName: string,
@@ -12,7 +8,7 @@ type ResponseArray = {
   birthDate: string | number,
 }
 
-const fifthTask: ValidatedEventAPIGatewayProxyEvent<typeof schema> = async (event) => {
+const fifthTask = async (event) => {
   const array: ResponseArray[] = event.body.array as ResponseArray[];
   const sortedByName = array.slice().sort((a, b) => a['firstName'] > b['firstName'] ? 1 : -1);
   const sortedByDate = array.slice()
@@ -27,9 +23,9 @@ const fifthTask: ValidatedEventAPIGatewayProxyEvent<typeof schema> = async (even
     });
   const result = { sortedByName, sortedByDate };
   
-  return formatJSONResponse({
-    result,
-  });
+  return {
+    result
+  };
 }
 
 export const main = middyfy(fifthTask);

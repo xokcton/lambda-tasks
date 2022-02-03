@@ -1,12 +1,8 @@
 import 'source-map-support/register';
 
-import type { ValidatedEventAPIGatewayProxyEvent } from '@middlewares/formatJSONResponse';
-import { formatJSONResponse } from '@middlewares/formatJSONResponse';
 import { middyfy } from '@middlewares/middyfy';
 
-import schema from './schema';
-
-const thirdTask: ValidatedEventAPIGatewayProxyEvent<typeof schema> = async (event) => {
+const thirdTask = async (event) => {
   const array = JSON.parse(event.body.array);
   const n = JSON.parse(event.body.n);
   const amount = n > array.length ? array.length : n;
@@ -17,9 +13,9 @@ const thirdTask: ValidatedEventAPIGatewayProxyEvent<typeof schema> = async (even
     addition
   };
 
-  return formatJSONResponse({
-    result,
-  });
+  return {
+    result
+  };
 }
 
 export const main = middyfy(thirdTask);

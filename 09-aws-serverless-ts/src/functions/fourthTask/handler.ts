@@ -1,6 +1,5 @@
 import 'source-map-support/register';
 
-import { formatJSONResponse } from '@middlewares/formatJSONResponse';
 import { middyfy } from '@middlewares/middyfy';
 
 const fourthTask = async (event) => {
@@ -21,9 +20,9 @@ const fourthTask = async (event) => {
     serialNumber
   }
 
-  return formatJSONResponse({
-    result,
-  });
+  return {
+    result
+  };
 }
 
 export const main = middyfy(fourthTask);
